@@ -1,7 +1,11 @@
 # E2Calib: How to Calibrate Your Event Camera
 
-<p align="center">
+<!-- <p align="center">
    <img src="http://rpg.ifi.uzh.ch/img/papers/CVPRW21_Muglikar.png" height="300"/>
+</p> -->
+
+<p align="center">
+   <img src="https://camo.githubusercontent.com/2149dcf66a53e4cf25d82e54176ce23c609d28c89ac93e2b4b5c99765e166d47/687474703a2f2f7270672e6966692e757a682e63682f696d672f7061706572732f435650525732315f4d75676c696b61722e706e67" height="300"/>
 </p>
 
 This repository contains code that implements video reconstruction from event data for calibration as described in the paper [Muglikar et al. CVPRW'21](http://rpg.ifi.uzh.ch/docs/CVPRW21_Muglikar.pdf).

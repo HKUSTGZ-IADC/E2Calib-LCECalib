@@ -151,3 +151,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# pretrain models
+E2VID_lightweight.pth.tar
