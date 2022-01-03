@@ -1,0 +1,383 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /ImageRaw1
+        - /Board3DOdom1/Status1
+        - /Board3DOdom1/Shape1
+        - /Board2DOdom1/Shape1
+      Splitter Ratio: 0.5536723136901855
+    Tree Height: 321
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: cloudRaw
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.30000001192092896
+          Name: Axes
+          Radius: 0.029999999329447746
+          Reference Frame: <Fixed Frame>
+          Value: true
+        - Alpha: 0.800000011920929
+          Cell Size: 1
+          Class: rviz/Grid
+          Color: 255; 255; 255
+          Enabled: true
+          Line Style:
+            Line Width: 0.029999999329447746
+            Value: Lines
+          Name: Grid
+          Normal Cell Count: 0
+          Offset:
+            X: 0
+            Y: 0
+            Z: -1
+          Plane: XY
+          Plane Cell Count: 5
+          Reference Frame: <Fixed Frame>
+          Value: true
+      Enabled: true
+      Name: Axis
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 162
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: cloudRaw
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 1.5
+          Size (m): 0.009999999776482582
+          Style: Points
+          Topic: /vlp/velodyne_points
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 12
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: cloudBoard
+          Position Transformer: XYZ
+          Queue Size: 0
+          Selectable: true
+          Size (Pixels): 5
+          Size (m): 1
+          Style: Points
+          Topic: /exc/board_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 3
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: cloudBoundary
+          Position Transformer: XYZ
+          Queue Size: 0
+          Selectable: true
+          Size (Pixels): 10
+          Size (m): 0.009999999776482582
+          Style: Points
+          Topic: /exc/boundary_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+      Enabled: true
+      Name: cloud
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /cam0/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: ImageRaw
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /exc/img_board
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: ImageBoard
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /exc/img_ex_opt
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: ExOpt
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Angle Tolerance: 0.009999999776482582
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: false
+      Enabled: true
+      Keep: 1000
+      Name: Board3DOdom
+      Position Tolerance: 0.009999999776482582
+      Shape:
+        Alpha: 1
+        Axes Length: 0.10000000149011612
+        Axes Radius: 0.009999999776482582
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
+        Value: Axes
+      Topic: /exc/odom_board3d
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 255; 0; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Billboards
+      Line Width: 0.029999999329447746
+      Name: Board3DPath
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /exc/path_board3d
+      Unreliable: false
+      Value: true
+    - Angle Tolerance: 0.009999999776482582
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: true
+      Enabled: true
+      Keep: 1000
+      Name: Board2DOdom
+      Position Tolerance: 0.009999999776482582
+      Shape:
+        Alpha: 1
+        Axes Length: 0.10000000149011612
+        Axes Radius: 0.009999999776482582
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 0.10000000149011612
+        Shaft Radius: 0.009999999776482582
+        Value: Axes
+      Topic: /exc/odom_board2d
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Billboards
+      Line Width: 0.029999999329447746
+      Name: Board2DPath
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /exc/path_board2d
+      Unreliable: false
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 85; 87; 83
+    Default Light: true
+    Fixed Frame: velodyne
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
+      Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 3.6322436332702637
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0.8077216148376465
+        Y: 0.08518116176128387
+        Z: -0.0222256351262331
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.5547985434532166
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 4.400653839111328
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  ExOpt:
+    collapsed: false
+  Height: 1031
+  Hide Left Dock: false
+  Hide Right Dock: true
+  ImageBoard:
+    collapsed: false
+  ImageRaw:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd000000040000000000000176000002d3fc020000000bfb000000100044006900730070006c006100790073010000011400000183000000ce00fffffffb0000001200530065006c0065006300740069006f006e0000000313000000d40000005e00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb000000100049006d006100670065005200610077010000029d0000014a0000001800fffffffb0000000a0049006d00610067006500000002cd000000c80000000000000000fb0000000c00430061006d006500720061010000025d0000001a0000000000000000000000010000010f000003c0fc0200000003fb0000000a005600690065007700730000000027000003c0000000ac00fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b2000000000000000000000002000003a40000010efc0100000007fb0000000a0049006d0061006700650100000000000001670000000000000000fb0000000a00450078004f007000740100000000000001490000006400fffffffb000000140049006d0061006700650042006f006100720064010000014f000002550000009300fffffffb0000000a0049006d00610067006501000003140000019a0000000000000000fb0000001600540069006d0065005300750072006600610063006501000003050000009d0000000000000000fb000000100049006d00610067006500520061007701000003a8000000800000000000000000fb00000010004500760065006e0074004d00610070010000042e00000080000000000000000000000003000004280000023cfc0100000003fb0000000800540069006d00650000000000000002b8000002b800fffffffb0000000a0056006900650077007301000003b0000001000000000000000000fb0000000800540069006d0065010000000000000450000000000000000000000228000002d300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 932
+  X: 1253
+  Y: 24

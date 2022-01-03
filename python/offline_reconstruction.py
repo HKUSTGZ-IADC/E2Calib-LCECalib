@@ -1,3 +1,15 @@
+# usage1: python3 offline_reconstruction.py \
+# --h5file ../../../dataset/event_camera/e2calib/prophesee/without_triggers/data.h5 \ 
+# --freq_hz 5 --upsample_rate 4 --height 480 --width 640
+
+# usage2: python convert.py --input_file ../../../dataset/event_camera/e2calib/davis346/ \
+# office_6dof.bag --output_file ../../../dataset/event_camera/e2calib/davis346/office_6dof 
+# --ros_topic /cam0/events
+
+# usage3: python3 offline_reconstruction.py  --h5file path/event_bag.h5 \
+# --output_folder path --timestamps_file path/trigger_fromat.txt \
+# --upsample_rate 4 --height 480 --width 640
+
 import argparse
 import os
 os.environ['CUDA_DEVICE_ORDER'] = 'PCI_BUS_ID'
@@ -15,14 +27,12 @@ from reconstruction.image_reconstructor import ImageReconstructor
 from reconstruction.options.inference_options import set_inference_options
 from reconstruction.utils.voxelgrid import VoxelGrid
 
-
 def download_checkpoint(path_to_model):
     print('Downloading E2VID checkpoint to {} ...'.format(path_to_model))
     e2vid_model = urllib.request.urlopen('http://rpg.ifi.uzh.ch/data/E2VID/models/E2VID_lightweight.pth.tar')
     with open(path_to_model, 'w+b') as f:
         f.write(e2vid_model.read())
     print('Done with downloading!')
-
 
 if __name__ == "__main__":
 
@@ -71,8 +81,10 @@ if __name__ == "__main__":
 
     if not os.path.exists(args.output_folder):
         os.makedirs(args.output_folder)
-    else:
-        assert os.path.isdir(args.output_folder)
+    # if not os.path.exists(args.output_folder):
+    #     os.makedirs(args.output_folder)
+    # else:
+    #     assert os.path.isdir(args.output_folder)
 
     image_reconstructor = ImageReconstructor(model, args.height, args.width, model.num_bins, args)
     print('== Image reconstruction == ')
@@ -80,6 +92,38 @@ if __name__ == "__main__":
     print('Will write images to: {}'.format(os.path.join(args.output_folder, args.dataset_name)))
     grid = VoxelGrid(model.num_bins, args.width, args.height, upsample_rate=args.upsample_rate)
     pbar = tqdm.tqdm(total=len(data_provider))
+
+    # convert events into event maps
+    # data_cnt = 0
+    # for events in data_provider:
+    #     if events.events.size > 0:
+    #         sliced_events = grid.event_slicer(events.events, events.t_reconstruction)
+    #         for i in range(len(sliced_events)):  # len(sliced_events) = upsample_rate
+    #             event_slice = sliced_events[i]
+    #             if event_slice is None:
+    #                 warnings.warn('No events returned. We do not reconstruct for this timestamp')
+    #             else:
+    #                 pass
+    #                 # event_array = grid.convert_to_event_array(sliced_events[i])
+    #                 # print(event_array)
+    #                 # input()
+    #             if i == len(sliced_events) - 1:
+    #                 event_array = grid.convert_to_event_array(sliced_events[i])
+    #                 print(event_array.shape)
+    #                 import numpy as np
+    #                 event_map = np.zeros((args.height, args.width, 3), np.uint8)
+    #                 for ev in event_array:
+    #                     event_map[int(ev[2]), int(ev[1])] = (255, 255, 255)
+    #                 import cv2
+    #                 cv2.imwrite('{}/event_map/{}.png'.format(args.output_folder, data_cnt), event_map)
+
+    #                 rec_ts_nanoseconds = int(events.t_reconstruction)*1000
+    #                 image_reconstructor.save_reconstruction(data_cnt)
+    #                 data_cnt += 1
+    #                 pbar.update(1)
+
+    # convert events into reconstructed images
+    data_cnt = 0
     for events in data_provider:
         if events.events.size > 0:
             sliced_events = grid.event_slicer(events.events, events.t_reconstruction)
@@ -92,7 +136,9 @@ if __name__ == "__main__":
                     event_grid = grid.normalize_voxel(event_grid)
                     event_tensor = torch.from_numpy(event_grid)
                     image_reconstructor.update_reconstruction(event_tensor)
-                if i== len(sliced_events) - 1:
+                if i == len(sliced_events) - 1:
                     rec_ts_nanoseconds = int(events.t_reconstruction)*1000
-                    image_reconstructor.save_reconstruction(rec_ts_nanoseconds)
+                    # image_reconstructor.save_reconstruction(rec_ts_nanoseconds)
+                    image_reconstructor.save_reconstruction(data_cnt)
+                    data_cnt += 1
                     pbar.update(1)

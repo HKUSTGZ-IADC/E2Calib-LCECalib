@@ -136,9 +136,11 @@ class ImageWriter:
             cv2.imwrite(join(self.event_previews_folder,
                              'events_{:019d}.png'.format(event_tensor_id)), event_preview)
 
+        # cv2.imwrite(join(self.output_folder, self.dataset_name,
+        #                  '{:019d}.png'.format(event_tensor_id)), img)
+        # TODO: jjiao
         cv2.imwrite(join(self.output_folder, self.dataset_name,
-                         '{:019d}.png'.format(event_tensor_id)), img)
-
+                         '{:05d}.png'.format(event_tensor_id)), img)
 
     def __cleanup__(self):
         return 0

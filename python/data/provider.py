@@ -187,6 +187,9 @@ class DataProvider:
         self.height = height
         self.width = width
 
+        print('start time: {}us'.format(self.shared_buffer_consumer.get_t_start_us()))
+        print('end time: {}us'.format(self.shared_buffer_consumer.get_t_end_us()))
+
         self.timestamp_provider = timestamp_provider
         self.timestamp_provider.initialize(
                 self.shared_buffer_consumer.get_t_start_us(),
