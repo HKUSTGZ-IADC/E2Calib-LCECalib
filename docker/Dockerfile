@@ -30,8 +30,7 @@ CMD [ "/bin/bash" ]
 RUN conda install pytorch==1.4 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
 
 RUN apt update && apt-get -y install python3-pip
+RUN pip3 install --upgrade pip
 RUN pip3 install h5py==3.1.0 numpy
 RUN pip3 install dataclasses 
-RUN pip3 install --extra-index-url https://rospypi.github.io/simple/ rospy rosbag
-
-
+# RUN pip3 install --extra-index-url https://rospypi.github.io/simple/ rospy rosbag sensor-msgs
