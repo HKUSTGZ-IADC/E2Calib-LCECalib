@@ -32,5 +32,5 @@ RUN apt update && apt-get -y install python3-pip
 RUN pip install --upgrade pip
 RUN pip install h5py==3.1.0 numpy
 RUN pip install dataclasses 
-RUN pip install roskpg catkin_pkg bagpy
+RUN pip install bagpy
 RUN pip install opencv-python
