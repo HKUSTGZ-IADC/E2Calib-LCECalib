@@ -20,7 +20,7 @@ if __name__ == '__main__':
         assert output_file.suffix == '.h5'
     else:
         output_file = Path(input_file).parent / (input_file.stem + '.h5')
-    assert not output_file.exists(), f"{output_file} already exists."
+    assert not output_file.exists(), "{} already exists.".format(output_file)
 
     rostopic = args.ros_topic
 

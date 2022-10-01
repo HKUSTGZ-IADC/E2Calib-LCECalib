@@ -1,6 +1,5 @@
-# Docker file for det3
-# Author: Peng YUN (pyun@cse.ust.hk)
-# Copyright Peng YUN, RAM-Lab, HKUST
+# Docker file for E2VID
+
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 # install mini conda 4.7.12.1
@@ -8,7 +7,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get update --fix-missing && \
-    apt-get install -y wget bzip2 ca-certificates curl git && \
+    apt-get install -y wget bzip2 ca-certificates curl git vim locate && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -30,7 +29,8 @@ CMD [ "/bin/bash" ]
 RUN conda install pytorch==1.4 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
 
 RUN apt update && apt-get -y install python3-pip
-RUN pip3 install --upgrade pip
-RUN pip3 install h5py==3.1.0 numpy
-RUN pip3 install dataclasses 
-# RUN pip3 install --extra-index-url https://rospypi.github.io/simple/ rospy rosbag sensor-msgs
+RUN pip install --upgrade pip
+RUN pip install h5py==3.1.0 numpy
+RUN pip install dataclasses 
+RUN pip install roskpg catkin_pkg bagpy
+RUN pip install opencv-python
