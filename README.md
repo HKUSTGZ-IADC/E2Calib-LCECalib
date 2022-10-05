@@ -1,8 +1,35 @@
-# E2Calib: How to Calibrate Your Event Camera
+# E2Calib-LCECalib
+This is the LCECalib wrapper of E2Calib
 
-<!-- <p align="center">
-   <img src="http://rpg.ifi.uzh.ch/img/papers/CVPRW21_Muglikar.png" height="300"/>
-</p> -->
+### Run E2Calib to generate reconstructed images from events
+1. Setup docker environment
+```
+docker pull iidcramlab/e2vid:cuda10.1-conda-py3	
+nvidia-docker run -v host_folder:client_folder -it --name e2vid iidcramlab/e2vid:cuda10.1-conda-py3  /bin/bash
+```
+
+2. Convert *rosbag* into *h5 file*: 
+```
+python3 convert.py --input_file test.bag --output_file test.h5 --ros_topic /davis/events
+```
+
+3. Generate trigger timestamps in the integer type: 
+```
+python3 format_timestamps.py --timestamps_file trigger.txt --timestamps_file_save trigger_format.txt
+```
+
+4. Reconstruct frame images without trigger: 
+```
+python3 offline_reconstruction.py  --h5file xxx.h5 --output_folder path_to_folder --freq_hz 5 --upsample_rate 4 --height 260 --width 346
+```
+
+5. Reconstruct frame images with trigger: 
+```
+python3 offline_reconstruction.py  --h5file xxx.h5 --output_folder path_to_folder --timestamps_file trigger_format.txt --upsample_rate 4 --height 260 --width 346
+```
+
+-----------------
+# E2Calib: How to Calibrate Your Event Camera
 
 <p align="center">
    <img src="https://camo.githubusercontent.com/2149dcf66a53e4cf25d82e54176ce23c609d28c89ac93e2b4b5c99765e166d47/687474703a2f2f7270672e6966692e757a682e63682f696d672f7061706572732f435650525732315f4d75676c696b61722e706e67" height="300"/>

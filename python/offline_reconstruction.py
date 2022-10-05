@@ -18,6 +18,8 @@ import urllib
 import warnings
 
 import torch
+torch.backends.cudnn.enabled=False
+
 import tqdm
 
 from data.provider import DataProvider
