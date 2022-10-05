@@ -23,9 +23,9 @@ python3 format_timestamps.py --timestamps_file trigger.txt --timestamps_file_sav
 python3 offline_reconstruction.py  --h5file xxx.h5 --output_folder path_to_folder --freq_hz 5 --upsample_rate 4 --height 260 --width 346
 ```
 
-5. Reconstruct frame images with trigger: 
+5. Reconstruct frame images with time trigger: 
 ```
-python3 offline_reconstruction.py  --h5file xxx.h5 --output_folder path_to_folder --timestamps_file trigger_format.txt --upsample_rate 4 --height 260 --width 346
+python3 offline_reconstruction.py  --h5file test.h5 --output_folder path_to_folder --timestamps_file trigger_format.txt --upsample_rate 4 --height 260 --width 346
 ```
 
 -----------------
